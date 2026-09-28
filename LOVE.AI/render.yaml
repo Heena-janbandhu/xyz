@@ -1,0 +1,26 @@
+# ──────────────────────────────────────────────────────────────
+#  Render.com — Static Site Deployment Config
+#  Heena's Birthday Surprise for Yash ❤️
+#  Docs: https://render.com/docs/static-sites
+# ──────────────────────────────────────────────────────────────
+
+services:
+  - type: web
+    name: birthday-surprise-yash
+    env: static
+    # No build step needed — pure HTML/CSS/JS
+    buildCommand: ""
+    staticPublishPath: .
+    headers:
+      # Cache static assets aggressively, always revalidate HTML
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+    routes:
+      # Serve index.html for all routes (single-page experience)
+      - type: rewrite
+        source: /*
+        destination: /index.html

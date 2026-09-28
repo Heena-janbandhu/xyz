@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3D0A1E" />
+  <title>A Little Surprise for Yash ❤️</title>
+  <meta name="description" content="Something I made for you, Yash. Open it when you're ready. ❤️💋" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- ═══ EMOJI FAVICON ═══════════════════════════════ -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>" />
+
+  <!-- ═══ OPEN GRAPH / SOCIAL PREVIEW ════════════════ -->
+  <!-- TODO: Replace the og:url value below with your actual deployed URL -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOUR-DEPLOYED-URL.com" />
+  <meta property="og:title" content="A Little Surprise for Yash ❤️" />
+  <meta property="og:description" content="Something I made for you. Open it when you're ready. ❤️💋" />
+
+  <!-- ═══ TWITTER / X CARD ════════════════════════════ -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Little Surprise for Yash ❤️" />
+  <meta name="twitter:description" content="Something I made for you. Open it when you're ready. ❤️💋" />
+
+  <!-- ═══ FONTS ════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- ═══ STYLES ═══════════════════════════════════════ -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ─── BOOT CANVAS ───────────────────────────────── */
+    #boot-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #boot-screen>*:not(#boot-canvas) {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── KEYFRAMES (used in HTML / inline) ─────────── */
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      14% {
+        transform: scale(1.3);
+      }
+
+      28% {
+        transform: scale(1);
+      }
+
+      42% {
+        transform: scale(1.2);
+      }
+
+      70% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0.9;
+        transform: translateY(0) scale(0.8) rotate(0deg);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: translateY(-120px) scale(1.1) rotate(15deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-260px) scale(0.5) rotate(-10deg);
+      }
+    }
+
+    @keyframes pulse-heart {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.7);
+      }
+    }
+
+    @keyframes bootProgress {
+      from {
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      to {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+
+    @keyframes scanMove {
+      from {
+        top: 0;
+      }
+
+      to {
+        top: 100%;
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+      }
+    }
+
+    @keyframes petalFall {
+      0% {
+        opacity: 0.7;
+        transform: translateY(0) rotate(0deg) translateX(0);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: translateY(200px) rotate(180deg) translateX(30px);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(400px) rotate(360deg) translateX(-20px);
+      }
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* ─── BOOT HEART ────────────────────────────────── */
+    .boot-heart-pulse {
+      display: inline-block;
+      animation: heartbeat 2s ease-in-out infinite;
+      font-size: 2rem;
+    }
+
+    /* ─── HERO FADE ─────────────────────────────────── */
+    .hero-fade {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .hero-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── ORBS ──────────────────────────────────────── */
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(139, 35, 66, 0.18);
+      top: -150px;
+      right: -150px;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(155, 126, 200, 0.12);
+      bottom: -100px;
+      left: -100px;
+      animation-delay: -3s;
+    }
+
+    .orb-3 {
+      width: 350px;
+      height: 350px;
+      background: rgba(193, 89, 106, 0.12);
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -5s;
+    }
+
+    /* ─── HEART DETECTION ───────────────────────────── */
+    .hd-result {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--blush);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateX(-15px);
+      transition: all 0.5s ease;
+    }
+
+    .hd-result.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .hd-check {
+      color: #A8D8A8;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .hd-label {
+      color: rgba(232, 160, 174, 0.7);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .hd-value {
+      color: var(--cream);
+      font-size: 0.78rem;
+    }
+
+    /* ─── ANALYSIS STEPS ────────────────────────────── */
+    .analysis-step {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--lavender);
+      margin-bottom: 0.6rem;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .analysis-step.visible {
+      opacity: 1;
+    }
+
+    #final-result {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    #final-result.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── REVEAL ────────────────────────────────────── */
+    .reveal-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px) scale(0.9);
+      transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .reveal-word.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ─── KISS PARTICLE ─────────────────────────────── */
+    .kiss-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 1.4rem;
+      animation: floatUp 3s ease-out forwards;
+    }
+
+    /* ─── DATASET ∞ ─────────────────────────────────── */
+    .dataset-infinity {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 20vw, 12rem);
+      font-weight: 300;
+      color: var(--rose);
+      line-height: 1;
+      text-shadow: 0 0 60px rgba(193, 89, 106, 0.4);
+    }
+
+    /* ─── TRAINING COMPLETE ─────────────────────────── */
+    #training-complete {
+      display: none;
+      margin-top: 1.5rem;
+      animation: fadeSlideUp 0.6s ease forwards;
+    }
+
+    /* ─── SEARCH RESULT ─────────────────────────────── */
+    #search-bf-result {
+      display: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      line-height: 2.2;
+      color: var(--lavender);
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    /* ─── LETTER DECO ───────────────────────────────── */
+    .letter-heart-deco {
+      text-align: center;
+      font-size: 1.2rem;
+      letter-spacing: 0.5rem;
+      color: var(--blush);
+      opacity: 0.55;
+      margin: 1.5rem 0;
+    }
+
+    /* ─── SECTION BG OVERRIDES ──────────────────────── */
+    #reveal-section {
+      background: linear-gradient(160deg, #3D0A1E 0%, #6B1A2A 25%, #8B2342 50%, #6B1A2A 75%, #3D0A1E 100%);
+    }
+
+    #final-section {
+      background: linear-gradient(160deg, #2A0810 0%, #4A1020 30%, #6B1A2A 60%, #4A1020 100%);
+    }
+
+    /* Warm gold glow for the final section orb */
+    .orb-final-gold {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.12) 0%, rgba(139, 35, 66, 0.08) 70%, transparent 100%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ─── STAR DIVIDER ──────────────────────────────── */
+    .star-divider {
+      text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 1rem;
+      color: rgba(232, 160, 174, 0.3);
+      margin: 0;
+      padding: 1rem 0;
+    }
+
+    /* ─── NAV ───────────────────────────────────────── */
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--blush);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ─── SYS STATUS ────────────────────────────────── */
+    .sys-status-card {
+      display: grid;
+      gap: 0.7rem;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .sys-row {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sys-key {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--blush);
+      letter-spacing: 0.05em;
+    }
+
+    .sys-val {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--cream);
+    }
+
+    .sys-val.green {
+      color: #A8D8A8;
+    }
+
+    .sys-val.gold {
+      color: var(--gold-light);
+    }
+
+    .sys-val.blush {
+      color: var(--blush);
+    }
+
+    .sys-val.connected::before {
+      content: '●  ';
+      font-size: 0.5rem;
+      color: #A8D8A8;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    /* ─── HD FINAL ──────────────────────────────────── */
+    #hd-final {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #hd-final.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ─── BOOT "FROM" LINE ──────────────────────────── */
+    .boot-from-line {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: rgba(232, 160, 174, 0.7);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    /* ─── SHIMMER ───────────────────────────────────── */
+    .shimmer-text {
+      background: linear-gradient(90deg, var(--cream) 0%, var(--gold-light) 30%, var(--blush) 60%, var(--cream) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+
+    /* ─── HERO DECO LINE ────────────────────────────── */
+    .hero-deco-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--rose), transparent);
+      margin: 1.5rem auto;
+      border-radius: 2px;
+    }
+
+    /* ─── SPARKLE / PETAL ───────────────────────────── */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9997;
+      animation: sparkle 1.5s ease-in-out forwards;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .petal {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9996;
+      font-size: 0.9rem;
+      animation: petalFall 6s ease-in forwards;
+      user-select: none;
+    }
+
+    /* ─── SCROLLBAR ─────────────────────────────────── */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--deep-navy);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--wine);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--rose);
+    }
+
+    /* ─── MOBILE ────────────────────────────────────── */
+    @media (max-width: 430px) {
+      .boot-logo-text {
+        font-size: clamp(1.8rem, 10vw, 2.8rem);
+      }
+
+      .boot-name {
+        font-size: clamp(2.5rem, 14vw, 4rem);
+      }
+    }
+
+    /* ─── REDUCED MOTION ────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ─── DAYS COUNTER ──────────────────────────────── */
+    .days-counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 520px;
+      margin: 2rem auto 0;
+    }
+
+    .days-counter-cell {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 1.2rem 0.5rem;
+      text-align: center;
+    }
+
+    .days-counter-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 300;
+      color: var(--cream);
+      display: block;
+      line-height: 1;
+    }
+
+    .days-counter-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--blush);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.4rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 400px) {
+      .days-counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ─── OPEN-WHEN LETTERS ─────────────────────────── */
+    .open-when-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .open-when-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .open-when-btn {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.15rem;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: background 0.3s;
+    }
+
+    .open-when-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .open-when-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s;
+      padding: 0 1.5rem;
+    }
+
+    .open-when-content.open {
+      max-height: 300px;
+      padding: 0.8rem 1.5rem 1.5rem;
+    }
+
+    .open-when-content p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--dusty-pink);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ─── RUNAWAY NO ──────────────────────────────────── */
+    .keep-forever-section {
+      text-align: center;
+    }
+
+    /* keep-buttons-wrap: fixed height arena for the runaway button, overflow hidden prevents scroll */
+    #keep-buttons-wrap {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      position: relative;
+      min-height: 130px;
+      overflow: hidden;
+    }
+
+    #keep-yes-btn {
+      /* uses .btn .btn-primary */
+    }
+
+    #keep-no-btn {
+      position: absolute;
+      transition: left 0.22s ease, top 0.22s ease;
+    }
+
+    #keep-yes-msg {
+      display: none;
+      margin-top: 2rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: var(--blush);
+      animation: fadeSlideUp 0.5s ease forwards;
+    }
+
+    /* ─── SCRATCH CARDS ─────────────────────────────── */
+    .scratch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      justify-items: center;
+    }
+
+    .scratch-wrap {
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      width: 240px;
+      max-width: 100%;
+    }
+
+    /* reward div sits BEHIND the canvas */
+    .scratch-reveal {
+      position: absolute;
+      inset: 0;
+      background: #1A0A14;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.7;
+      padding: 0.5rem;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* canvas (scratch layer) sits ON TOP */
+    .scratch-wrap canvas {
+      border-radius: 14px;
+      cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='28' font-size='28'>💋</text></svg>") 16 16, crosshair;
+      touch-action: none;
+      max-width: 100%;
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+
+    .scratch-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--lavender);
+      margin-top: 0.6rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── TYPING TERMINAL ───────────────────────────── */
+    .typed-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--blush);
+      animation: pulse-dot 0.8s ease-in-out infinite;
+      vertical-align: text-bottom;
+      margin-left: 2px;
+    }
+
+    /* ─── WHATSAPP BUTTON ───────────────────────────── */
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      padding: 0.9rem 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      margin-top: 1.5rem;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+    }
+
+    /* ─── FILM GRAIN OVERLAY ────────────────────────── */
+    #film-grain {
+      position: fixed;
+      inset: 0;
+      z-index: 9990;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ─── CURSOR GLOW ───────────────────────────────── */
+    #cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(193, 89, 106, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      transition: left 0.1s, top 0.1s;
+    }
+
+
+    /* ─── CONFETTI ──────────────────────────────────── */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 9995;
+      pointer-events: none;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Film grain overlay (aesthetic, pointer-events none) -->
+  <div id="film-grain" aria-hidden="true"></div>
+
+  <!-- Cursor soft glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Confetti canvas (reveal moment) -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ══════════════════════════════════════════════════════
+     BOOT SCREEN
+══════════════════════════════════════════════════════ -->
+  <div id="boot-screen" role="main" aria-label="Birthday surprise loading screen">
+    <canvas id="boot-canvas" aria-hidden="true"></canvas>
+
+    <p class="boot-from-line">from heena, with love 💋</p>
+    <div class="boot-heart-pulse" aria-hidden="true">❤️</div>
+
+    <div class="boot-logo">
+      <span class="boot-logo-text">Yash...</span>
+    </div>
+
+    <p class="boot-tagline">I made something for you.</p>
+    <p class="boot-subtitle">Not just a birthday wish.<br>A little piece of my heart,<br>written in code.</p>
+
+    <div class="boot-loading-bar" role="progressbar" aria-label="Loading" aria-valuenow="0" aria-valuemin="0"
+      aria-valuemax="100" id="boot-progress">
+      <div class="boot-loading-fill" id="boot-fill"></div>
+    </div>
+    <p class="boot-status" id="boot-status" aria-live="polite">Initializing something special...</p>
+    <p class="boot-for">For my favorite person ❤️</p>
+
+    <div class="boot-enter-btn" id="boot-enter" style="display:none;">
+      <button class="btn btn-primary" onclick="enterExperience()" id="boot-enter-btn"
+        aria-label="Open your birthday surprise" style="font-size:1rem; padding: 1rem 2.8rem; letter-spacing: 0.1em;">
+        Open Your Surprise 💋
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+     CONNECTING OVERLAY
+══════════════════════════════════════════════════════ -->
+  <div id="connect-overlay" aria-hidden="true">
+    <div
+      style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.3em; color:var(--blush); opacity:0.7; text-transform:uppercase; margin-bottom:1rem;">
+      for yash ❤️
+    </div>
+    <div class="connect-message visible" id="connect-msg">Loading your surprise...</div>
+    <div
+      style="width:200px; height:2px; background:rgba(255,255,255,0.06); border-radius:2px; overflow:hidden; margin-top:2rem;">
+      <div
+        style="width:100%; height:100%; background:linear-gradient(90deg,var(--wine),var(--blush)); border-radius:2px; animation:bootProgress 6s linear forwards;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════ -->
+  <nav id="main-nav" aria-label="Site navigation">
+    <a href="#hero" class="nav-logo" aria-label="Go to top">
+      <span style="font-family:'Dancing Script',cursive; font-size:1.1rem; color:var(--blush);">Heena &amp; Yash</span>
+      <span style="color:var(--rose); margin-left:4px;">❤️</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#dataset-section">Dataset</a></li>
+      <li><a href="#sentiment-section">Analysis</a></li>
+      <li><a href="#training-section">Training</a></li>
+      <li><a href="#letter-section">Letter</a></li>
+      <li><a href="#reveal-section">Reveal</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="music-btn" id="music-btn" title="Toggle music" aria-label="Toggle background music">🔇</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+     MAIN CONTENT
+══════════════════════════════════════════════════════ -->
+  <div id="main-content" style="display:none;">
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 1: HERO
+  ─────────────────────────────────────────────────── -->
+    <section id="hero" class="section bg-romantic" style="text-align:center;" aria-label="Welcome">
+      <div class="glow-orb orb-1" aria-hidden="true"></div>
+      <div class="glow-orb orb-2" aria-hidden="true"></div>
+      <div class="glow-orb orb-3" aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <div class="hero-ai-tag hero-fade" aria-label="Made by Heena for Yash">
+          <span class="dot" aria-hidden="true"></span> Made by Heena · Birthday Edition · For Yash
+        </div>
+
+        <h1 class="hero-title hero-fade shimmer-text" style="font-size: clamp(3rem, 12vw, 7rem);">
+          Yash ❤️
+        </h1>
+
+        <div class="hero-deco-line hero-fade" aria-hidden="true"></div>
+
+        <p class="hero-sub hero-fade">I made something for you.</p>
+        <p class="hero-system hero-fade" style="-webkit-text-fill-color: var(--lavender);">
+          Not just a birthday wish. A little piece of my heart, written in code.
+        </p>
+
+        <!-- TYPING TERMINAL — lines typed out by JS -->
+        <div class="hero-fade" style="margin-top:3rem;">
+          <div class="terminal-block" style="max-width:480px; margin:0 auto; text-align:left;"
+            aria-label="Playful terminal messages" id="hero-terminal">
+            <!-- Lines injected by initTypingTerminal() -->
+          </div>
+        </div>
+
+        <div class="hero-fade" style="margin-top:2.5rem;">
+          <a href="#dataset-section" class="btn btn-primary" aria-label="Start the experience">Begin ❤️</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 2: DAYS TOGETHER COUNTER
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-dreamy" style="text-align:center;" aria-label="Days Together">
+      <div class="glow-orb"
+        style="width:400px;height:400px;background:rgba(155,126,200,0.12);top:50%;left:50%;transform:translate(-50%,-50%);"
+        aria-hidden="true"></div>
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Together · 001 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.5rem;">Days Together ✦</h2>
+        <p class="fade-in" style="font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--blush);">
+          Every second counts. ❤️
+        </p>
+        <div class="days-counter-grid fade-in" aria-live="polite" aria-label="Time together counter">
+          <div class="days-counter-cell">
+            <span class="days-counter-num" id="cnt-days">—</span>
+            <span class="days-counter-label">Days</span>
+          </div>
+          <div class="days-counter-cell">
+            <span class="days-counter-num" id="cnt-hours">—</span>
+            <span class="days-counter-label">Hours</span>
+          </div>
+          <div class="days-counter-cell">
+            <span class="days-counter-num" id="cnt-mins">—</span>
+            <span class="days-counter-label">Mins</span>
+          </div>
+          <div class="days-counter-cell">
+            <span class="days-counter-num" id="cnt-secs">—</span>
+            <span class="days-counter-label">Secs</span>
+          </div>
+        </div>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--lavender);margin-top:1.5rem;opacity:0.7;letter-spacing:0.1em;">
+          …and every single one was worth it.
+        </p>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 3: MY FAVORITE DATASET
+  ─────────────────────────────────────────────────── -->
+    <section id="dataset-section" class="section bg-blush" data-animate="dataset" aria-label="My Favorite Dataset">
+      <div class="glow-orb" style="width:400px;height:400px;background:rgba(155,126,200,0.15);top:-100px;left:-100px;"
+        aria-hidden="true"></div>
+      <div class="glow-orb"
+        style="width:300px;height:300px;background:rgba(139,35,66,0.12);bottom:-80px;right:-80px;animation-delay:-4s;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Dataset · 002 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.4rem;">My Favorite Dataset</h2>
+        <p class="fade-in"
+          style="font-family:'Dancing Script',cursive; font-size:1.3rem; color:var(--blush); margin-bottom:0.5rem;">
+          Everything I could never fit into one message.</p>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--lavender); margin-bottom:2.5rem; letter-spacing:0.1em;">
+          Collected over time...</p>
+
+        <ul class="dataset-list fade-in" aria-label="Dataset contents">
+          <li><span class="check" aria-hidden="true">✓</span> Your smile</li>
+          <li><span class="check" aria-hidden="true">✓</span> Your voice</li>
+          <li><span class="check" aria-hidden="true">✓</span> Your messages</li>
+          <li><span class="check" aria-hidden="true">✓</span> Your silly jokes</li>
+          <li><span class="check" aria-hidden="true">✓</span> Our conversations</li>
+          <li><span class="check" aria-hidden="true">✓</span> Our memories</li>
+          <li><span class="check" aria-hidden="true">✓</span> The moments I miss</li>
+          <li><span class="check" aria-hidden="true">✓</span> The moments I wish could last forever</li>
+        </ul>
+
+        <div style="margin-top:3rem; text-align:center;" class="fade-in">
+          <p class="section-label">Dataset size</p>
+          <p class="dataset-infinity" aria-label="Infinite">∞</p>
+          <p class="section-label" style="margin-top:1rem;">Data source</p>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--cream); font-style:italic;">YOU
+            ❤️</p>
+        </div>
+
+        <div class="data-cards-grid" style="margin-top:3rem;">
+          <div class="data-card glass-card">
+            <div class="data-card-icon" aria-hidden="true">💌</div>
+            <div class="data-card-label">MESSAGE</div>
+            <div class="data-card-value">"Every text from you still makes me smile."</div>
+          </div>
+          <div class="data-card glass-card">
+            <div class="data-card-icon" aria-hidden="true">📞</div>
+            <div class="data-card-label">CALL</div>
+            <div class="data-card-value">Duration:<br>Never enough.</div>
+          </div>
+          <div class="data-card glass-card">
+            <div class="data-card-icon" aria-hidden="true">💋</div>
+            <div class="data-card-label">KISS</div>
+            <div class="data-card-value">Required:<br>Unlimited</div>
+          </div>
+          <div class="data-card glass-card">
+            <div class="data-card-icon" aria-hidden="true">❤️</div>
+            <div class="data-card-label">LOVE</div>
+            <div class="data-card-value">Status:<br>Still increasing...</div>
+          </div>
+          <div class="data-card glass-card">
+            <div class="data-card-icon" aria-hidden="true">🥹</div>
+            <div class="data-card-label">MISS YOU</div>
+            <div class="data-card-value">Status:<br>Always active</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 4: EMOTIONAL ANALYSIS
+  ─────────────────────────────────────────────────── -->
+    <section id="sentiment-section" class="section bg-dreamy" data-animate="sentiment" aria-label="Emotional Analysis">
+      <div class="glow-orb" style="width:450px;height:450px;background:rgba(193,89,106,0.12);top:-100px;right:-100px;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Analysis · 003 ]</p>
+        <h2 class="h-title fade-in">Emotional Analysis</h2>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--lavender); margin:0.5rem 0 2.5rem; letter-spacing:0.1em;">
+          Analyzing how Heena feels about Yash...
+        </p>
+
+        <div class="glass-card fade-in" style="max-width:600px;">
+          <div
+            style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--blush); letter-spacing:0.2em; margin-bottom:1.5rem; opacity:0.8;">
+            — SENTIMENT ANALYSIS RESULTS —</div>
+
+          <div class="progress-bar-wrap">
+            <div class="progress-label">LOVE</div>
+            <div class="progress-track">
+              <div class="progress-fill" data-target="99.9"
+                style="background:linear-gradient(90deg,var(--wine),var(--blush));"></div>
+            </div>
+            <div class="progress-value">99.9%</div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-label">MISS YOU</div>
+            <div class="progress-track">
+              <div class="progress-fill" data-target="99.8"
+                style="background:linear-gradient(90deg,var(--soft-purple),var(--lavender));"></div>
+            </div>
+            <div class="progress-value">99.8%</div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-label">HAPPINESS</div>
+            <div class="progress-track">
+              <div class="progress-fill" data-target="98.7"
+                style="background:linear-gradient(90deg,#8B6A4A,var(--gold-light));"></div>
+            </div>
+            <div class="progress-value">98.7%</div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-label">AFFECTION</div>
+            <div class="progress-track">
+              <div class="progress-fill" data-target="99.9"></div>
+            </div>
+            <div class="progress-value">99.9%</div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-label">LAUGHTER</div>
+            <div class="progress-track">
+              <div class="progress-fill" data-target="94.5" style="background:linear-gradient(90deg,#4A6B8A,#A8D8D8);">
+              </div>
+            </div>
+            <div class="progress-value">94.5%</div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-label">KISSES</div>
+            <div class="progress-track">
+              <div class="progress-fill" data-target="100"
+                style="background:linear-gradient(90deg,var(--wine),var(--rose)); box-shadow: 0 0 15px var(--rose);">
+              </div>
+            </div>
+            <div class="progress-value">∞</div>
+          </div>
+
+          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+            <div class="terminal-line" style="margin-bottom:0.5rem;">> Checking if Yash is annoying...</div>
+            <div class="terminal-error">Confirmed. 🙄</div>
+            <div class="terminal-line" style="margin-top:0.5rem;">> Checking if Heena still loves him...</div>
+            <div class="terminal-success">Obviously. ❤️</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 5: BOYFRIEND MODEL
+  ─────────────────────────────────────────────────── -->
+    <section id="boyfriend-model-section" class="section bg-blush" data-animate="boyfriend-model"
+      aria-label="Boyfriend Model">
+      <div class="glow-orb"
+        style="width:400px;height:400px;background:rgba(155,126,200,0.14);bottom:-100px;right:-100px;animation-delay:-2s;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Model · 004 ]</p>
+        <h2 class="h-title fade-in">Boyfriend Model v1.0</h2>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--lavender); margin:0.5rem 0 2.5rem; letter-spacing:0.08em;">
+          Subject: YASH &nbsp;|&nbsp; Status: LOADED ✓
+        </p>
+
+        <div class="glass-card fade-in" style="max-width:600px;">
+          <div class="model-output">
+            <div class="model-row">
+              <div class="model-row-label">Intelligence</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="98"></div>
+              </div>
+              <div class="model-row-val">98%</div>
+            </div>
+            <div class="model-row">
+              <div class="model-row-label">Cuteness</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="99"></div>
+              </div>
+              <div class="model-row-val">99%</div>
+            </div>
+            <div class="model-row">
+              <div class="model-row-label">Funny</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="95"></div>
+              </div>
+              <div class="model-row-val">95%</div>
+            </div>
+            <div class="model-row">
+              <div class="model-row-label">Annoying 🙄</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="100"
+                  style="background:linear-gradient(90deg,#FF6B8A,#FFB0C0);"></div>
+              </div>
+              <div class="model-row-val">100%</div>
+            </div>
+            <div class="model-row">
+              <div class="model-row-label">Huggable</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="100"></div>
+              </div>
+              <div class="model-row-val">100%</div>
+            </div>
+            <div class="model-row">
+              <div class="model-row-label">Kissable 💋</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="100"></div>
+              </div>
+              <div class="model-row-val">100%</div>
+            </div>
+            <div class="model-row">
+              <div class="model-row-label">Loveable</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="100"
+                  style="background:linear-gradient(90deg,var(--wine),var(--blush)); box-shadow:0 0 12px var(--rose);">
+                </div>
+              </div>
+              <div class="model-row-val">∞</div>
+            </div>
+            <div class="model-row">
+              <div class="model-row-label">Importance</div>
+              <div class="model-row-bar">
+                <div class="model-row-fill" data-target="100"
+                  style="background:linear-gradient(90deg,#8B6A4A,var(--gold-light)); box-shadow:0 0 12px var(--gold);">
+                </div>
+              </div>
+              <div class="model-row-val" style="color:var(--gold-light);">∞</div>
+            </div>
+          </div>
+
+          <div
+            style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08); text-align:center;">
+            <p class="section-label">Final Classification</p>
+            <p
+              style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--gold-light); font-weight:300; margin-top:0.5rem;">
+              IRREPLACEABLE ❤️
+            </p>
+            <p
+              style="font-family:'Dancing Script',cursive; font-size:1.1rem; color:var(--blush); opacity:0.85; margin-top:0.5rem;">
+              Some things are measurable.<br>You are not one of them.
+            </p>
+          </div>
+        </div>
+
+        <div class="error-card fade-in" style="max-width:600px; margin-top:1.5rem;">
+          <p class="error-title">ERROR 404</p>
+          <p style="font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--cream); line-height:2;">
+            Could not find someone better than Yash.<br>
+            <span class="terminal-success">Search terminated. ❤️</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 6: TRAINING
+  ─────────────────────────────────────────────────── -->
+    <section id="training-section" class="section bg-lavender" data-animate="training"
+      aria-label="Training the Love Model">
+      <div class="glow-orb" style="width:500px;height:500px;background:rgba(155,126,200,0.12);top:-150px;left:-150px;"
+        aria-hidden="true"></div>
+      <div class="glow-orb"
+        style="width:300px;height:300px;background:rgba(139,35,66,0.1);bottom:-80px;right:-80px;animation-delay:-6s;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Training · 005 ]</p>
+        <h2 class="h-title fade-in">Training Love Model</h2>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--lavender); margin:0.5rem 0 0.5rem; letter-spacing:0.08em;">
+          Teaching the model what loving Yash feels like.
+        </p>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--lavender); margin:0 0 2.5rem; letter-spacing:0.08em; opacity:0.7;">
+          Model: LOVE-NN v1.0 &nbsp;|&nbsp; Dataset: YASH + HEENA
+        </p>
+
+        <div class="glass-card fade-in" style="max-width:680px;">
+          <!-- Responsive grid: stacks on mobile -->
+          <div
+            style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:2rem; margin-bottom:1.5rem;">
+            <div>
+              <p class="section-label">Current Epoch</p>
+              <p class="epoch-display" id="epoch-display">Epoch 001 / 100</p>
+            </div>
+            <div>
+              <p class="section-label">Loss</p>
+              <p class="loss-value" id="loss-display">0.91</p>
+            </div>
+          </div>
+
+          <p class="section-label" style="margin-bottom:0.5rem;">Training Curve</p>
+          <canvas id="training-graph" style="width:100%;height:160px;"
+            aria-label="Training loss curve animation"></canvas>
+
+          <div id="training-complete">
+            <div
+              style="margin-top:1rem; padding:1.2rem; background:rgba(168,216,168,0.08); border:1px solid rgba(168,216,168,0.2); border-radius:12px; text-align:center;">
+              <p style="font-family:'Space Mono',monospace; font-size:0.78rem; color:#A8D8A8; letter-spacing:0.1em;">
+                TRAINING COMPLETE</p>
+              <p
+                style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--cream); margin-top:0.5rem; font-style:italic;">
+                Loss: 0.00 &nbsp;·&nbsp; Love: ∞ 💋
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="warning-card fade-in" style="max-width:680px; margin-top:1.5rem;">
+          <p class="warning-title">⚠️ WARNING</p>
+          <p style="font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--cream); line-height:2.2;">
+            Yash detected.<br>
+            Heart rate: UNKNOWN<br>
+            Smiling: YES
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 7: HEART DETECTION SYSTEM
+  ─────────────────────────────────────────────────── -->
+    <section id="heart-detection-section" class="section bg-blush" data-animate="heart-detection"
+      aria-label="Heart Detection System">
+      <div class="glow-orb" style="width:400px;height:400px;background:rgba(193,89,106,0.15);top:-80px;right:-80px;"
+        aria-hidden="true"></div>
+      <div class="glow-orb"
+        style="width:280px;height:280px;background:rgba(155,126,200,0.1);bottom:-60px;left:-60px;animation-delay:-4s;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Heart Detection · 006 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.5rem;">The Heart Detection System ❤️</h2>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--lavender); letter-spacing:0.1em; margin-bottom:3rem;">
+          ⚠️ Warning: results may cause blushing.
+        </p>
+
+        <!-- Responsive: stacks on mobile -->
+        <div
+          style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:2.5rem; max-width:700px; align-items:start;"
+          class="fade-in">
+
+          <!-- Left: CSS scanner -->
+          <div>
+            <p class="section-label" style="margin-bottom:1.2rem;">Scanning</p>
+            <div
+              style="font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--lavender); margin-bottom:1rem;">
+              <span style="color:var(--blush);">▶</span> <span id="hd-scan-text">Initializing...</span>
+            </div>
+
+            <!-- Big heart visualiser — tap 5× for easter egg -->
+            <div id="hd-big-heart-wrap"
+              style="position:relative; width:100%; max-width:200px; aspect-ratio:1; background:linear-gradient(145deg, rgba(107,26,42,0.4), rgba(139,35,66,0.2)); border:1px solid rgba(193,89,106,0.2); border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center; cursor:pointer;"
+              onclick="hdEasterEgg()" aria-label="Tap 5 times for a secret" role="button" tabindex="0">
+              <div style="position:absolute; inset:0; overflow:hidden; border-radius:16px;">
+                <div id="hd-scan-line-anim"
+                  style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(193,89,106,0.8),transparent); box-shadow:0 0 10px rgba(193,89,106,0.5); animation:scanMove 2s linear infinite;">
+                </div>
+              </div>
+              <div
+                style="font-size:4rem; animation:pulse-heart 1.5s ease-in-out infinite; filter:drop-shadow(0 0 20px rgba(193,89,106,0.6));"
+                aria-hidden="true">❤️</div>
+              <!-- Bracket corners -->
+              <div
+                style="position:absolute; top:8px; left:8px; width:16px; height:16px; border-top:2px solid var(--rose); border-left:2px solid var(--rose);">
+              </div>
+              <div
+                style="position:absolute; top:8px; right:8px; width:16px; height:16px; border-top:2px solid var(--rose); border-right:2px solid var(--rose);">
+              </div>
+              <div
+                style="position:absolute; bottom:8px; left:8px; width:16px; height:16px; border-bottom:2px solid var(--rose); border-left:2px solid var(--rose);">
+              </div>
+              <div
+                style="position:absolute; bottom:8px; right:8px; width:16px; height:16px; border-bottom:2px solid var(--rose); border-right:2px solid var(--rose);">
+              </div>
+            </div>
+
+            <!-- Easter egg message -->
+            <div id="hd-easter-msg"
+              style="display:none; margin-top:1rem; font-family:'Dancing Script',cursive; font-size:1.1rem; color:var(--gold-light); animation:fadeSlideUp 0.5s ease forwards;">
+              🎉 You found the secret! I love you more than you know. 💋
+            </div>
+          </div>
+
+          <!-- Right: results -->
+          <div>
+            <p class="section-label" style="margin-bottom:1.2rem;">Detection Results</p>
+
+            <div class="hd-result" id="hd-r1">
+              <span class="hd-check" aria-hidden="true">✓</span>
+              <span><span class="hd-label">CONVERSATIONS</span><span class="hd-value">Found countless reasons to
+                  smile</span></span>
+            </div>
+            <div class="hd-result" id="hd-r2">
+              <span class="hd-check" aria-hidden="true">✓</span>
+              <span><span class="hd-label">MEMORIES</span><span class="hd-value">Too many to count</span></span>
+            </div>
+            <div class="hd-result" id="hd-r3">
+              <span class="hd-check" aria-hidden="true">✓</span>
+              <span><span class="hd-label">LITTLE MOMENTS</span><span class="hd-value">Still making my heart
+                  happy</span></span>
+            </div>
+            <div class="hd-result" id="hd-r4">
+              <span class="hd-check" aria-hidden="true">✓</span>
+              <span><span class="hd-label">FEELINGS</span><span class="hd-value">Strongly detected</span></span>
+            </div>
+            <div class="hd-result" id="hd-r5">
+              <span class="hd-check" aria-hidden="true">✓</span>
+              <span><span class="hd-label">LOVE</span><span class="hd-value">Impossible to quantify</span></span>
+            </div>
+
+            <div id="hd-final"
+              style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+              <p class="section-label">Final Result</p>
+              <p
+                style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--cream); font-weight:300; margin-top:0.5rem;">
+                Heart detected. ❤️
+              </p>
+              <p
+                style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--blush); margin-top:0.5rem; letter-spacing:0.1em;">
+                Location: With Yash.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-card fade-in" style="max-width:700px; margin-top:2rem;">
+          <p
+            style="font-family:'Space Mono',monospace; font-size:0.72rem; color:#A8D8D8; letter-spacing:0.2em; margin-bottom:0.8rem;">
+            SYSTEM ALERT</p>
+          <p style="font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--cream); line-height:2.2;">
+            Too much love detected.<br>
+            Recommended action: Give Yash a kiss. 💋
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 8: FINAL AI PREDICTION
+  ─────────────────────────────────────────────────── -->
+    <section id="final-analysis-section" class="section bg-dreamy" data-animate="final-analysis"
+      aria-label="Final AI Prediction">
+      <div class="glow-orb"
+        style="width:500px;height:500px;background:rgba(155,126,200,0.1);top:50%;left:50%;transform:translate(-50%,-50%);"
+        aria-hidden="true"></div>
+      <div class="section-inner" style="text-align:center;">
+        <p class="section-label fade-in">[ Final Analysis · 007 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:2rem;">Final Analysis</h2>
+
+        <div class="glass-card fade-in" style="max-width:600px; margin:0 auto;">
+          <p class="analysis-step">> Processing...</p>
+          <p class="analysis-step">> Searching all memories...</p>
+          <p class="analysis-step">> Searching all conversations...</p>
+          <p class="analysis-step">> Searching every reason...</p>
+          <p class="analysis-step">> Final result ready.</p>
+
+          <div id="final-result"
+            style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+            <p class="section-label">Subject</p>
+            <p
+              style="font-family:'Space Mono',monospace; font-size:1.2rem; color:var(--cream); letter-spacing:0.2em; margin:0.4rem 0 1rem;">
+              YASH</p>
+            <p class="section-label">Classification</p>
+            <h3
+              style="font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3.5rem); color:var(--cream); font-weight:300; line-height:1.1; margin:0.4rem 0 1.5rem;">
+              My Favorite Human ❤️
+            </h3>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:400px; margin:0 auto;">
+              <div style="text-align:center;">
+                <p class="section-label">Replaceability</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--rose);">0%</p>
+              </div>
+              <div style="text-align:center;">
+                <p class="section-label">Importance</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold-light);">∞</p>
+              </div>
+              <div style="text-align:center;">
+                <p class="section-label">Love</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--rose);">∞</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 9: REASONS I LOVE YOU
+  ─────────────────────────────────────────────────── -->
+    <section id="reasons-section" class="section bg-dreamy" data-animate="reasons" aria-label="Reasons I Love You">
+      <div class="glow-orb" style="width:400px;height:400px;background:rgba(193,89,106,0.12);top:-80px;right:-80px;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Reasons · 008 ]</p>
+        <h2 class="h-title fade-in" style="text-align:center; margin-bottom:2.5rem;">Reasons I Love You</h2>
+
+        <div class="reasons-grid">
+          <div class="reason-card">Because of the way you say my name. It always gets me.</div>
+          <div class="reason-card">Because you make me smile without even trying.</div>
+          <div class="reason-card">Because talking to you makes everything feel lighter.</div>
+          <div class="reason-card">Because you care in ways you probably don't even realize.</div>
+          <div class="reason-card">Because even ordinary moments feel special with you.</div>
+          <div class="reason-card">Because I can be completely myself with you.</div>
+          <div class="reason-card">Because of the look on your face when you're trying not to laugh and failing.</div>
+          <div class="reason-card">Because you are my comfort person. Always.</div>
+          <div class="reason-card">Because whenever things are hard, I still want to tell you first. You make everything
+            feel calmer.</div>
+        </div>
+
+        <div class="fade-in" style="text-align:center; margin-top:2.5rem;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--cream);font-style:italic;">And
+            honestly...</p>
+          <p style="font-family:'Dancing Script',cursive;font-size:1.8rem;color:var(--blush);margin-top:0.3rem;">
+            I stopped counting a long time ago. ❤️
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 11: YASH.EXE
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-blush" aria-label="YASH.EXE Boyfriend Package">
+      <div class="glow-orb"
+        style="width:350px;height:350px;background:rgba(155,126,200,0.14);top:-80px;left:-80px;animation-delay:-2s;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner" style="max-width:680px; margin:0 auto;">
+        <p class="section-label fade-in">[ Package · 010 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.5rem;">YASH.EXE</h2>
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--lavender);margin-bottom:2rem;letter-spacing:0.08em;">
+          Package: boyfriend-v1.0 · Status: INSTALLED ❤️</p>
+
+        <div class="glass-card fade-in">
+          <p class="section-label" style="margin-bottom:1rem;">Package contents</p>
+          <ul class="package-list">
+            <li>One handsome boyfriend</li>
+            <li>Unlimited conversations</li>
+            <li>Random jokes (quality may vary)</li>
+            <li>Occasional annoyance 🙄</li>
+            <li>Lots of smiles</li>
+            <li>Unlimited hugs</li>
+            <li>Unlimited kisses 💋</li>
+            <li>One very loving Heena ❤️</li>
+          </ul>
+
+          <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+            <p class="section-label">Installation status</p>
+            <p
+              style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream);font-style:italic;margin-top:0.4rem;">
+              PERMANENTLY INSTALLED ❤️
+            </p>
+            <p
+              style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--lavender);margin-top:0.5rem;letter-spacing:0.1em;opacity:0.7;">
+              Uninstall option unavailable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 12: SYSTEM STATUS + SEARCH
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-dreamy" aria-label="Relationship System Status">
+      <div class="glow-orb"
+        style="width:400px;height:400px;background:rgba(139,35,66,0.12);bottom:-100px;right:-100px;animation-delay:-4s;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner" style="max-width:720px; margin:0 auto;">
+        <p class="section-label fade-in">[ Status · 011 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:2rem;">Relationship System Status</h2>
+
+        <div class="sys-status-card glass-card fade-in">
+          <div class="sys-row"><span class="sys-key">Connection</span><span class="sys-val green connected">CONNECTED
+              ❤️</span></div>
+          <div class="sys-row"><span class="sys-key">Signal</span><span class="sys-val green">STRONG</span></div>
+          <div class="sys-row"><span class="sys-key">Distance</span><span class="sys-val">IRRELEVANT</span></div>
+          <div class="sys-row"><span class="sys-key">Miss-you process</span><span class="sys-val blush">RUNNING</span>
+          </div>
+          <div class="sys-row"><span class="sys-key">Love process</span><span class="sys-val blush">RUNNING</span></div>
+          <div class="sys-row"><span class="sys-key">Kiss queue</span><span class="sys-val gold">∞</span></div>
+          <div class="sys-row"><span class="sys-key">Heart status</span><span class="sys-val blush">TAKEN ❤️</span>
+          </div>
+          <div class="sys-row"><span class="sys-key">User</span><span class="sys-val">HEENA</span></div>
+          <div class="sys-row"><span class="sys-key">Favorite person</span><span class="sys-val">YASH</span></div>
+        </div>
+
+        <div class="glass-card fade-in" style="margin-top:1.5rem;">
+          <p class="section-label" style="margin-bottom:1rem;">Diagnostic Tool</p>
+          <button class="btn btn-ghost" id="search-bf-btn" onclick="searchBetterBoyfriend()" style="width:100%;"
+            aria-label="Run search for better boyfriend">
+            SEARCH FOR A BETTER BOYFRIEND
+          </button>
+          <div id="search-bf-result" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 13: OPEN-WHEN LETTERS
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-blush" aria-label="Open When Letters">
+      <div class="glow-orb" style="width:400px;height:400px;background:rgba(193,89,106,0.1);bottom:-80px;right:-80px;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner" style="max-width:720px; margin:0 auto;">
+        <p class="section-label fade-in">[ Letters · 012 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.5rem;">Open When...</h2>
+        <p class="fade-in"
+          style="font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--blush);margin-bottom:0.5rem;">
+          …because some moments need a letter, not a text.
+        </p>
+
+        <div class="open-when-grid fade-in">
+
+          <div class="open-when-card">
+            <button class="open-when-btn" onclick="toggleOpenWhen(this)" aria-expanded="false">
+              <span aria-hidden="true">💌</span> Open when you miss me
+            </button>
+            <div class="open-when-content" role="region">
+              <p>
+                Hey. If you're reading this, you miss me — which means I'm already there with you, in a way.
+                I think about you more than you know. This distance? It's just space. It can't change how much
+                you mean to me. Text me. I miss you too. ❤️
+              </p>
+            </div>
+          </div>
+
+          <div class="open-when-card">
+            <button class="open-when-btn" onclick="toggleOpenWhen(this)" aria-expanded="false">
+              <span aria-hidden="true">🌙</span> Open when you can't sleep
+            </button>
+            <div class="open-when-content" role="region">
+              <p>
+                Stop overthinking. Whatever it is — you'll figure it out. You always do. And if you can't sleep,
+                just know that somewhere I'm probably also awake, thinking of you. 🥹
+                Now close your eyes. I'm right there. 💋
+              </p>
+            </div>
+          </div>
+
+          <div class="open-when-card">
+            <button class="open-when-btn" onclick="toggleOpenWhen(this)" aria-expanded="false">
+              <span aria-hidden="true">🙄</span> Open when you're annoyed at me
+            </button>
+            <div class="open-when-content" role="region">
+              <p>
+                Okay, fair. I was probably annoying. But also — you love me anyway. 🙃
+                Give it an hour. I'll still be here, being slightly annoying, and also loving you a lot.
+                Come back when you're ready. I'll be here. ❤️
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 14: KEEP ME FOREVER (RUNAWAY NO)
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-dreamy keep-forever-section" aria-label="Will you keep me forever">
+      <div class="glow-orb"
+        style="width:450px;height:450px;background:rgba(193,89,106,0.1);top:50%;left:50%;transform:translate(-50%,-50%);"
+        aria-hidden="true"></div>
+
+      <div class="section-inner" style="text-align:center;">
+        <p class="section-label fade-in">[ Important Question · 013 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.5rem;">Will you keep me forever?</h2>
+        <p class="fade-in"
+          style="font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--blush);margin-bottom:2rem;">
+          Think carefully. ❤️
+        </p>
+
+        <!-- Runaway No button: positioned inside .section-inner so it never causes overflow -->
+        <div class="keep-buttons fade-in" id="keep-buttons-wrap">
+          <button class="btn btn-primary" id="keep-yes-btn" onclick="keepYes()" aria-label="Yes, forever">
+            Yes, forever 💋
+          </button>
+          <button class="btn btn-ghost" id="keep-no-btn" onmouseenter="runawayNo(this)" ontouchstart="runawayNo(this)"
+            aria-label="The No button (it runs away)">
+            No
+          </button>
+        </div>
+
+        <div id="keep-yes-msg" aria-live="polite">
+          🎉 That's the right answer.<br>
+          <span style="font-family:'Dancing Script',cursive;font-size:1.6rem;">I'm keeping you too. Forever. ❤️</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 15: SCRATCH CARD COUPONS
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-blush" aria-label="Birthday Coupons">
+      <div class="glow-orb" style="width:350px;height:350px;background:rgba(155,126,200,0.12);top:-80px;left:-80px;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner" style="max-width:720px; margin:0 auto;">
+        <p class="section-label fade-in">[ Coupons · 014 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.5rem;">Birthday Coupons ✦</h2>
+        <p class="fade-in"
+          style="font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--blush);margin-bottom:0.5rem;">
+          Scratch to reveal. Use wisely. 💋
+        </p>
+
+        <div class="scratch-grid fade-in">
+          <div class="scratch-wrap">
+            <!-- Reward shown behind canvas; canvas scratch layer on top -->
+            <div class="scratch-reveal" id="scratch-reveal-1" aria-hidden="true" style="color:#C1596A;">🤗 ONE FREE
+              HUG<br>Redeemable any time.<br>No expiry.</div>
+            <canvas id="scratch-1" width="240" height="140" aria-label="Scratch card 1: Free Hug"></canvas>
+            <p class="scratch-label">Scratch to reveal ↑</p>
+          </div>
+          <div class="scratch-wrap">
+            <div class="scratch-reveal" id="scratch-reveal-2" aria-hidden="true" style="color:#9B7EC8;">🎬 MOVIE
+              NIGHT<br>Your choice. Any movie.<br>No complaints from me.</div>
+            <canvas id="scratch-2" width="240" height="140" aria-label="Scratch card 2: Movie Night"></canvas>
+            <p class="scratch-label">Scratch to reveal ↑</p>
+          </div>
+          <div class="scratch-wrap">
+            <div class="scratch-reveal" id="scratch-reveal-3" aria-hidden="true" style="color:#D4A853;">✨ FORGIVENESS
+              PASS<br>"I forgive you for<br>being annoying."<br>(One-time use. Maybe.)</div>
+            <canvas id="scratch-3" width="240" height="140" aria-label="Scratch card 3: Forgiveness Pass"></canvas>
+            <p class="scratch-label">Scratch to reveal ↑</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 16: MAIN QUOTE
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-dreamy" style="text-align:center; padding:clamp(80px,12vw,160px) clamp(20px,6vw,80px);"
+      aria-label="A quote">
+      <div class="glow-orb"
+        style="width:600px;height:600px;background:rgba(155,126,200,0.08);top:50%;left:50%;transform:translate(-50%,-50%);"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <div class="quote-block fade-in"
+          style="text-align:center; border-left:none; border-top:3px solid var(--rose); border-radius:14px; padding:3rem 2rem;">
+          <p
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:var(--cream);font-weight:300;line-height:1.5;">
+            Some models learn from data.
+          </p>
+          <p
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:var(--cream);font-weight:300;line-height:1.5;margin-top:0.3rem;">
+            Mine learned from you.
+          </p>
+          <div class="divider" style="margin:1.5rem auto; width:120px;" aria-hidden="true"></div>
+          <p
+            style="font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,3vw,1.8rem);color:var(--blush);font-style:italic;">
+            And somehow, every result led back to you. ❤️
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 17: LOVE LETTER (before Reveal)
+  ─────────────────────────────────────────────────── -->
+    <section id="letter-section" class="section bg-blush" aria-label="A Letter from Heena">
+      <div class="glow-orb" style="width:450px;height:450px;background:rgba(139,35,66,0.15);top:-100px;right:-100px;"
+        aria-hidden="true"></div>
+
+      <div class="section-inner" style="max-width:720px; margin:0 auto;">
+        <p class="section-label fade-in" style="text-align:center;">[ A Letter · 015 ]</p>
+        <h2 class="h-title fade-in" style="text-align:center; margin-bottom:0.5rem;">A Letter from Heena 💌</h2>
+        <div class="section-heart-divider fade-in" aria-hidden="true">❤️ 💋 ❤️</div>
+
+        <div class="letter-paper fade-in">
+          <div class="letter-heart-deco" aria-hidden="true">❤ ✦ ❤</div>
+
+          <div class="letter-text">
+            <p>Yash,</p>
+            <p>I built this to tell you how I feel. Which is very on-brand for me — using the one thing I love to talk
+              about the one person I love more. Also, for the record, this took me way longer than your average reply
+              time. Just saying. 🙄</p>
+            <p>No model, no equation, no algorithm could actually calculate it. I've tried. The numbers don't go high
+              enough. And before you get smug about that — yes, you are my <span class="highlight">favorite
+                dataset</span>. The one I keep returning to. The one that makes every output make sense. Even when
+              you're being pagal.</p>
+            <p>Let me be honest: you are annoying. Occasionally. Sometimes often. But I picked you anyway, and I would
+              pick you again, probably before you even finished replying. No refunds. No returns. The terms were
+              accepted the moment I started smiling at my phone because of you.</p>
+            <p>Bug found: I can't stop smiling when I think of you. Status: Won't fix.</p>
+            <p>And what I do have is this — a thousand small moments I keep close, a hundred conversations I replay, and
+              the quiet, certain knowledge that <span class="highlight">Yash = irreplaceable</span>. Mera Yash. The
+              annoying-but-irreplaceable kind.</p>
+            <p>So here is what the model actually found, after all the processing:</p>
+            <p><span class="highlight">You. Just you.</span></p>
+            <p>Happy Birthday, Yash. I hope today is everything you are — warm, bright, and a little bit extra. ❤️</p>
+            <p>I love you.</p>
+            <p style="font-family:'Dancing Script',cursive;font-size:1.1rem;color:var(--blush);margin-bottom:0;">
+              More than yesterday, and still a little less than tomorrow.
+            </p>
+          </div>
+
+          <div class="letter-heart-deco" style="margin-top:2rem;" aria-hidden="true">✦ ❤ ✦</div>
+          <div class="letter-signature">
+            Forever yours,<br>Heena 💋
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 18: BIRTHDAY REVEAL (emotional peak)
+  ─────────────────────────────────────────────────── -->
+    <section id="reveal-section" class="section" aria-label="Birthday Reveal">
+      <div class="glow-orb"
+        style="width:500px;height:500px;background:rgba(193,89,106,0.2);top:50%;left:50%;transform:translate(-50%,-50%);"
+        aria-hidden="true"></div>
+
+      <div class="section-inner" style="text-align:center;">
+        <p class="fade-in"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.8rem);color:var(--cream);font-weight:300;line-height:1.5;margin-bottom:1rem;">
+          Yash...
+        </p>
+        <p class="fade-in fade-in-delay-1"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,3vw,2rem);color:var(--blush);font-style:italic;margin-bottom:1rem;">
+          I think the model missed something.
+        </p>
+        <p class="fade-in fade-in-delay-2"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--dusty-pink);margin-bottom:2.5rem;">
+          It couldn't calculate how much I love you.
+        </p>
+
+        <div class="reveal-main fade-in fade-in-delay-3">
+          ❤️ Happy Birthday, Yash ❤️
+        </div>
+
+        <p class="reveal-from fade-in fade-in-delay-4">From your Heenu 💋</p>
+
+        <div class="fade-in"
+          style="font-size:2.5rem;margin-top:2rem;letter-spacing:0.5rem;animation:pulse-heart 1.5s ease-in-out infinite;"
+          aria-hidden="true">
+          💋 ❤️ 💋
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 19: PERSONAL FINAL MESSAGE
+  ─────────────────────────────────────────────────── -->
+    <section class="section bg-dreamy" style="text-align:center; padding:clamp(60px,10vw,120px) clamp(20px,6vw,80px);"
+      aria-label="A personal message">
+      <div class="glow-orb"
+        style="width:500px;height:500px;background:rgba(155,126,200,0.08);top:50%;left:50%;transform:translate(-50%,-50%);"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <div class="glass-card fade-in" style="max-width:600px; margin:0 auto; padding:3rem 2.5rem;">
+          <p
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--cream);font-weight:300;line-height:1.8;margin-bottom:1.5rem;">
+            I made this because sometimes a normal 'Happy Birthday' doesn't feel like enough.
+          </p>
+          <p
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.2vw,1.35rem);color:var(--blush);line-height:1.8;margin-bottom:1.5rem;font-style:italic;">
+            I wanted to give you something that came from something I love doing...
+          </p>
+          <p
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.2vw,1.35rem);color:var(--cream);line-height:1.8;margin-bottom:2rem;">
+            ...and filled it with someone I love.
+          </p>
+          <div class="divider" style="margin:0 auto 2rem; width:100px;" aria-hidden="true"></div>
+          <p
+            style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--dusty-pink);line-height:1.8;margin-bottom:2rem;">
+            You walked in and somehow ended up being the most important part of everything I do. That's a you problem.
+            ❤️
+          </p>
+          <p style="font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,3vw,1.8rem);color:var(--blush);">
+            Forever yours,<br>Heena 💋
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 20: KISS COUNTER + WHATSAPP
+  ─────────────────────────────────────────────────── -->
+    <section id="kiss-counter-section" class="section bg-blush" style="text-align:center;" aria-label="Kiss Counter">
+      <div class="glow-orb"
+        style="width:400px;height:400px;background:rgba(193,89,106,0.12);top:50%;left:50%;transform:translate(-50%,-50%);"
+        aria-hidden="true"></div>
+
+      <div class="section-inner">
+        <p class="section-label fade-in">[ Kiss Counter · 016 ]</p>
+        <h2 class="h-title fade-in" style="margin-bottom:0.5rem;">Kisses for Yash 💋</h2>
+
+        <div class="kiss-count-display fade-in" id="kiss-count-display" aria-live="polite" aria-label="Kiss count">0
+        </div>
+
+        <button class="btn btn-primary fade-in" id="kiss-btn" onclick="sendKiss()"
+          style="font-size:1.1rem; padding:1rem 2.5rem; margin-top:0.5rem;" aria-label="Send a kiss to Yash">
+          SEND A KISS 💋
+        </button>
+
+        <p id="kiss-message"
+          style="font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--blush);margin-top:1rem;min-height:1.6em;transition:all 0.3s ease;"
+          aria-live="polite"></p>
+
+        <!-- WhatsApp send-kiss-back button -->
+        <a id="wa-btn"
+          href="https://wa.me/919403783996?text=I%20got%20your%20birthday%20surprise%20%F0%9F%98%8D%20Sending%20a%20kiss%20back%20%F0%9F%92%8B%E2%9D%A4%EF%B8%8F"
+          target="_blank" rel="noopener" class="btn-whatsapp fade-in" aria-label="Send Heena a kiss back on WhatsApp">
+          💬 Send Heena a kiss back
+        </a>
+      </div>
+    </section>
+
+    <div class="star-divider" aria-hidden="true">✦ ✦ ✦</div>
+
+    <!-- ─────────────────────────────────────────────────
+       SECTION 21: FINAL MESSAGE
+  ─────────────────────────────────────────────────── -->
+    <section id="final-section" class="section" aria-label="Final message">
+      <div class="glow-orb orb-final-gold" aria-hidden="true"></div>
+
+      <div class="section-inner" style="text-align:center;">
+        <p class="fade-in"
+          style="font-family:'Space Mono',monospace;font-size:clamp(1rem,3vw,1.8rem);color:var(--cream);letter-spacing:0.2em;margin-bottom:2rem;">
+          YASH ❤️
+        </p>
+
+        <p class="fade-in fade-in-delay-1"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,3vw,1.8rem);color:var(--blush);font-style:italic;margin-bottom:0.5rem;">
+          If you ever wonder how much I love you...
+        </p>
+
+        <p class="fade-in fade-in-delay-2"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:var(--cream);margin-bottom:2.5rem;">
+          Just know that this is a start. ❤️
+        </p>
+
+        <p class="fade-in fade-in-delay-3"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--dusty-pink);margin-bottom:2rem;">
+          Because I don't think one birthday is enough to tell you.
+        </p>
+
+        <div class="final-love fade-in">
+          I LOVE YOU, YASH. ❤️
+        </div>
+
+        <div class="divider" style="max-width:200px; margin:2rem auto;" aria-hidden="true"></div>
+
+        <p class="final-quote fade-in fade-in-delay-1">
+          More than yesterday,<br>and a little less than tomorrow.
+        </p>
+
+        <div class="final-signature fade-in fade-in-delay-2">
+          Forever yours,<br>Heena 💋
+        </div>
+
+        <div
+          style="margin-top:3rem; font-size:2rem; letter-spacing:0.8rem; animation:pulse-heart 1.5s ease-in-out infinite;"
+          class="fade-in fade-in-delay-3" aria-hidden="true">
+          💋 ❤️ 💋
+        </div>
+
+        <!-- Start Again -->
+        <div style="margin-top:3rem;" class="fade-in">
+          <p
+            style="font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--blush);margin-bottom:1rem;opacity:0.85;">
+            Wanna see it again? ❤️
+          </p>
+          <button class="btn btn-ghost" onclick="restartExperience()" style="font-size:0.85rem; letter-spacing:0.1em;"
+            aria-label="Start the experience from the beginning">
+            ↺ &nbsp; Start From The Beginning
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────
+       FOOTER
+  ─────────────────────────────────────────────────── -->
+    <footer>
+      <div class="footer-logo" style="font-family:'Dancing Script',cursive; font-size:1.4rem;">
+        Heena &amp; Yash <span style="color:var(--rose);">❤️</span>
+      </div>
+      <div class="footer-hearts" aria-hidden="true">💋 ❤️ 💋</div>
+      <div class="footer-info">
+        Made with: AI + Code + Memories + A ridiculous amount of love ❤️<br><br>
+        Created by: Heena<br>
+        For: Yash<br><br>
+        Happy Birthday, Yash. 🎂💋
+      </div>
+      <div
+        style="margin-top:2rem; font-family:'Space Mono',monospace; font-size:0.65rem; color:rgba(232,160,174,0.4); letter-spacing:0.15em;">
+        A Birthday Surprise · Made with Love · v2.0
+      </div>
+    </footer>
+
+  </div><!-- /main-content -->
+
+  <!-- ─── SCRIPTS ────────────────────────────────────── -->
+  <script src="js/main.js"></script>
+  <script>
+    /* ═══════════════════════════════════════════════════════
+       BOOT CANVAS — Twinkling stars
+    ═══════════════════════════════════════════════════════ */
+    (function () {
+      const canvas = document.getElementById('boot-canvas');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        buildStars();
+      }
+
+      function buildStars() {
+        stars = Array.from({ length: 100 }, () => ({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5,
+          a: Math.random(),
+          da: (Math.random() - 0.5) * 0.01
+        }));
+      }
+
+      function draw() {
+        if (document.getElementById('boot-screen').classList.contains('hidden')) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => {
+          s.a = Math.max(0.05, Math.min(1, s.a + s.da));
+          if (s.a <= 0.05 || s.a >= 1) s.da *= -1;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(232,160,174,${s.a * 0.5})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+
+      function bootHeart() {
+        const bootEl = document.getElementById('boot-screen');
+        if (!bootEl || bootEl.classList.contains('hidden')) return;
+        const el = document.createElement('div');
+        el.style.cssText = `position:absolute;left:${Math.random() * 100}%;top:${80 + Math.random() * 15}%;font-size:${0.8 + Math.random() * 0.8}rem;pointer-events:none;z-index:1;color:rgba(232,160,174,0.4);animation:floatUp ${3 + Math.random() * 2}s ease-out forwards;`;
+        el.textContent = ['♡', '♥', '❤️'][Math.floor(Math.random() * 3)];
+        bootEl.appendChild(el);
+        setTimeout(() => el.remove(), 5000);
+        setTimeout(bootHeart, 2000 + Math.random() * 3000);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+      setTimeout(bootHeart, 1500);
+    })();
+
+    /* ═══════════════════════════════════════════════════════
+       CURSOR GLOW
+    ═══════════════════════════════════════════════════════ */
+    (function () {
+      const glow = document.getElementById('cursor-glow');
+      document.addEventListener('mousemove', e => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+      });
+    })();
+
+    /* ═══════════════════════════════════════════════════════
+       SMOOTH RESTART
+    ═══════════════════════════════════════════════════════ */
+    function restartExperience() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => location.reload(), 700);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       OPEN-WHEN LETTERS
+    ═══════════════════════════════════════════════════════ */
+    function toggleOpenWhen(btn) {
+      const content = btn.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.open-when-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.open-when-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      if (!isOpen) {
+        content.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RUNAWAY NO BUTTON
+    ═══════════════════════════════════════════════════════ */
+    function runawayNo(btn) {
+      const wrap = document.getElementById('keep-buttons-wrap');
+      if (!wrap) return;
+      const wr = wrap.getBoundingClientRect();
+      const br = btn.getBoundingClientRect();
+      const bW = br.width || 60;
+      const bH = br.height || 40;
+      // Keep within wrap bounds with 10px padding
+      const maxX = Math.max(0, wr.width - bW - 10);
+      const maxY = Math.max(0, wr.height - bH - 10);
+      const rx = 10 + Math.random() * maxX;
+      const ry = 10 + Math.random() * maxY;
+      btn.style.left = rx + 'px';
+      btn.style.top = ry + 'px';
+    }
+
+    function keepYes() {
+      document.getElementById('keep-yes-msg').style.display = 'block';
+      spawnKissesFromBottom(12);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       EASTER EGG — tap heart 5×
+    ═══════════════════════════════════════════════════════ */
+    let hdTapCount = 0;
+    function hdEasterEgg() {
+      hdTapCount++;
+      if (hdTapCount >= 5) {
+        document.getElementById('hd-easter-msg').style.display = 'block';
+        spawnKissesFromBottom(8);
+        hdTapCount = 0;
+      }
+    }
+    // Keyboard support
+    document.getElementById && document.addEventListener('DOMContentLoaded', () => {
+      const wrap = document.getElementById('hd-big-heart-wrap');
+      if (wrap) wrap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') hdEasterEgg(); });
+    });
+
+    /* ═══════════════════════════════════════════════════════
+       SCRATCH CARDS
+    ═══════════════════════════════════════════════════════ */
+    function initScratchCards() {
+      const cards = [
+        { id: 'scratch-1' },
+        { id: 'scratch-2' },
+        { id: 'scratch-3' },
+      ];
+
+      cards.forEach(({ id }) => {
+        const canvas = document.getElementById(id);
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const W = canvas.width, H = canvas.height;
+
+        // Draw ONLY the scratch layer (gradient + hint text)
+        // The reward text lives in the .scratch-reveal div behind the canvas.
+        const grad = ctx.createLinearGradient(0, 0, W, H);
+        grad.addColorStop(0, '#3A0E20');
+        grad.addColorStop(1, '#6B1A2A');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+        // Hint text on scratch layer
+        ctx.fillStyle = 'rgba(232,160,174,0.65)';
+        ctx.font = '11px "Space Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('\ud83d\udc8b Scratch here \ud83d\udc8b', W / 2, H / 2);
+
+        // Use destination-out so scratching punches holes, revealing the div below
+        let scratching = false;
+
+        function scratch(x, y) {
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.beginPath();
+          ctx.arc(x, y, 22, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        function getPos(e) {
+          const r = canvas.getBoundingClientRect();
+          const scaleX = canvas.width / r.width;
+          const scaleY = canvas.height / r.height;
+          if (e.touches) {
+            return {
+              x: (e.touches[0].clientX - r.left) * scaleX,
+              y: (e.touches[0].clientY - r.top) * scaleY
+            };
+          }
+          return {
+            x: (e.clientX - r.left) * scaleX,
+            y: (e.clientY - r.top) * scaleY
+          };
+        }
+
+        canvas.addEventListener('mousedown', e => { scratching = true; const p = getPos(e); scratch(p.x, p.y); });
+        canvas.addEventListener('mousemove', e => { if (!scratching) return; const p = getPos(e); scratch(p.x, p.y); });
+        canvas.addEventListener('mouseup', () => { scratching = false; });
+        canvas.addEventListener('mouseleave', () => { scratching = false; });
+        canvas.addEventListener('touchstart', e => { e.preventDefault(); scratching = true; const p = getPos(e); scratch(p.x, p.y); }, { passive: false });
+        canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!scratching) return; const p = getPos(e); scratch(p.x, p.y); }, { passive: false });
+        canvas.addEventListener('touchend', () => { scratching = false; });
+      });
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       CONFETTI BURST (reveal section enters view)
+    ═══════════════════════════════════════════════════════ */
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      canvas.style.display = 'block';
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const pieces = [];
+      const colors = ['#C1596A', '#E8A0AE', '#C4A8D4', '#F0D080', '#9B7EC8', '#FBF0ED'];
+
+      for (let i = 0; i < 120; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: -20 - Math.random() * 100,
+          w: 6 + Math.random() * 8,
+          h: 10 + Math.random() * 6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vy: 2 + Math.random() * 4,
+          vx: (Math.random() - 0.5) * 3,
+          rot: Math.random() * Math.PI * 2,
+          rotV: (Math.random() - 0.5) * 0.2,
+          opacity: 1
+        });
+      }
+
+      let frame = 0;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.rotV;
+          p.vy += 0.1; // gravity
+          p.opacity = Math.max(0, 1 - p.y / canvas.height);
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        });
+        frame++;
+        if (frame < 180) requestAnimationFrame(draw);
+        else canvas.style.display = 'none';
+      }
+      draw();
+    }
+
+    // Observe reveal section for confetti
+    (function () {
+      let confettiFired = false;
+      const revealObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !confettiFired) {
+          confettiFired = true;
+          launchConfetti();
+          revealObs.disconnect();
+        }
+      }, { threshold: 0.4 });
+      document.addEventListener('DOMContentLoaded', () => {
+        const rs = document.getElementById('reveal-section');
+        if (rs) revealObs.observe(rs);
+      });
+    })();
+  </script>
+</body>
+
+</html>
